@@ -16,3 +16,6 @@ button {
   border: 1px solid black;
   background-color: rgb(213, 177, 245);
 }
+.status {
+  color : red;
+}

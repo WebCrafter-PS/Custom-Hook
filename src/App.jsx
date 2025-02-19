@@ -1,33 +1,18 @@
-import { useState, useEffect } from "react";
+import useGetdata from "../utility/useGetdata";
+import useOnlineStatus from "../utility/useOnlineStatus";
 import "./App.css";
 
 function App() {
-  const [country, setCountry] = useState([]);
-  //fetch country data using api call
-  useEffect(() => {
-    const fetchCountry = async () => {
-      var requestOptions = {
-        method: "GET",
-      };
-      //we get json data - so parse/breaking down it to JS obj(for codesake)
-      const jsonData = await fetch(
-        "https://restcountries.com/v3.1/region/asia/",
-        requestOptions
-      );
-      const promiseObj = await jsonData.json(); //returns a promise obj
-
-      const display = promiseObj.map((country) => country.name.common);
-      setCountry(display);
-    };
-    fetchCountry();
-  }, []);
+  const countryName = useGetdata();
+  const onlineStatus = useOnlineStatus();
 
   return (
     <div>
       <h1>Country</h1>
+      <div className="status">{onlineStatus ? "Online" : "Offline"}</div>
       {/* Use () while using map inside JSX no {} */}
       <div className="container">
-        {country.map((ele, index) => (
+        {countryName.map((ele, index) => (
           <div className="box" key={index}>
             {ele}{" "}
           </div>
