@@ -9,12 +9,12 @@ function App() {
   return (
     <div>
       <h1>Country</h1>
-      <div className="status">{onlineStatus ? "Online" : "Offline"}</div>
+      <div className="status">{onlineStatus ? "✅ Online" : "Offline"}</div>
       {/* Use () while using map inside JSX no {} */}
       <div className="container">
         {countryName.map((ele, index) => (
           <div className="box" key={index}>
-            {ele}{" "}
+            {ele}
           </div>
         ))}
       </div>
