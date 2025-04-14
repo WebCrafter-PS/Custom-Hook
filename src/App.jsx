@@ -5,9 +5,11 @@ import Navigation from "./components/navigate";
 import Body from "./components/body";
 import Country from "./components/country";
 import Starred from "./components/Starred";
+import { lazy, Suspense } from "react";
 
 function App() {
   const onlineStatus = useOnlineStatus();
+  const LazyComponent = lazy(() => import("./components/customHook"));
 
   return (
     <div>
@@ -18,10 +20,16 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Body />}>
-          
             <Route path="/country" element={<Country />}></Route>
             <Route path="/stared" element={<Starred />}></Route>
-            {/* <Route path="" element={}></Route> */}
+            <Route
+              path="/hook"
+              element={
+                <Suspense fallback={<h1>...loading</h1>}>
+                  <LazyComponent />
+                </Suspense>
+              }
+            ></Route>
           </Route>
         </Routes>
       </BrowserRouter>

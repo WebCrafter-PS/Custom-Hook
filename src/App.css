@@ -33,3 +33,9 @@ button {
 .navigate .list li {
   list-style-type: none;
 }
+a{
+  text-decoration: none;
+}
+ul li{
+  list-style-type: none;
+}
