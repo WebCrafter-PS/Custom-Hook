@@ -1,8 +1,9 @@
 import useTodo from "../../utility/useTodos";
 
-const CustomHook = () => {
+const CustomHook = (props) => {
   const todos = useTodo();
-
+  console.log(props);
+  
   return (
     <div>
       <h1>Custom hook Todo</h1>
